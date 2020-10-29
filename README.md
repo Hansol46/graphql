@@ -1,2 +1,2 @@
-# graphql
-about graphql
+# about GraphQL
+
