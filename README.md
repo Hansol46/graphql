@@ -153,4 +153,35 @@ Let's analyze in order what needs to be done for this.
 
 # Positive and negative GraphQL
 
-Разберем особенности и недостатки GraphQL. Начнем 
+Let's features and disadvantages of GraphQL.
+
+## Positive: 
+
+   1. **No overabundance when working with GraphQL**
+When working with GraphQL, there is no superfluous information. We only get what we ask for.
+GraphQL minimizes the amount of data transferred over the network by selectively picking it up and guided primarily by the needs of the client application.
+
+   2. **Strongly Typed GraphQL**
+GraphQL is a strongly typed query language written in an Expressive Schema Definition Language (SDL) for GraphQL. This language has the same benefits as any strongly typed programming language. Obviously this approach is less error prone
+
+   3. **One Source of Truth**
+There is one truth in GraphQL applications and that is the GraphQL schema. It is she who is the central source, which describes all the available data. clients can read (query) and write (modify) data based on this schema
+
+   4. **Versions of GraphQL**
+GraphQL doesn't have the same API versions that we're used to in REST. In REST, it's okay to offer multiple versions of the same API (eg api.domain.com/v1/, api.domain.com/v2/) because resources or their structure can change over time. In GraphQL, you can translate APIs into deprecated fields at the field level. Consequently, the client receives a warning when they access a deprecated field. After some time, the deprecated field can be excluded from the schema, then no more clients will use it. This way, the GraphQL API can evolve without the need for versioning
+
+## Negative 
+
+   1. **Problem N + 1**
+GraphQL is built on resolvers functions. This means that fetching data from the database can cause a problem called SELECT N + 1. Suppose that a list of objects was received in the resolver, in which the data associated with this object is represented by identifiers (foreign keys). For each such identifier, its own function-resolver will be called, in which (in each) a query to the database will be additionally made. Thus, instead of one query to the database, many queries will be executed, which overloads the database with queries.
+To solve this problem, facebook has developed a library github.com/graphql/dataloaderwhich uses the deferred query strategy
+   2. **Rate limiting in GraphQL**
+Another issue is rate limiting. While in REST it is relatively easy to say “no more than that many requests per day”, it is difficult to formulate such a statement for individual GraphQL operations, since there are not only “expensive” and “not expensive” operations, but many intermediate gradations. It is for such cases that companies Providing public GraphQL APIs, they offer their own rate limiting calculations, often boiling down to the aforementioned maximum query depths and weighting of query complexity.
+   3. **Caching GraphQL**
+When working with GraphQL, implementing a lightweight cache is much more complex than implementing REST. Working with REST, we refer to resources by URL and, therefore, we can organize caching at the resource level, since the URL of a resource can serve as its identifier. In GraphQL, this gets complicated because all requests can be different, even though everyone is operating on the same object. In one request, you can ask for the author's name, and in the next, not only the author's name, but also his email address. This is where you need a more subtle field-level cache, and it's not easy to implement. However, most libraries built on top of GraphQL offer such caching mechanisms out of the box.
+
+***And most importantly, GraphQL is not a database***
+
+
+
+
