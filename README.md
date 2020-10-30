@@ -5,6 +5,7 @@
 <p align="center" display="flex">
   <img src="https://i.ibb.co/jkQZ6KP/image.png" width="400" height="400" title="hover text">
 </p>
+
 **GraphQL**, in turn, acts as our personal assistant, allowing us to give him the opportunity to book you to the dentist, deliver delivery and connect with the machine repair service. We ask for what we need and then just wait.
 
 <p align="center" display="flex">
