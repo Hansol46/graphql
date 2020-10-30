@@ -184,6 +184,82 @@ When working with GraphQL, implementing a lightweight cache is much more complex
 
 ***And most importantly, GraphQL is not a database***
 
+<br />
 
+<br /> 
+
+## Authorization Yelp GraphQL API
+
+my version:<br />
+1. Client setup
+
+```
+const httpLink = createHttpLink({
+  uri: "https://api.yelp.com/v3/graphql",
+  fetchOptions: {
+    mode: "no-cors"
+  },
+  credentials: 'same-origin'
+});
+const authLink = setContext((_, { headers }) => {
+  const token = 's15mo4HIO8DJuwXwA38Bsh48sBtcy99rnHYJYgpGpm1UWE0qCbI7iZJfZ72QHHpuPoFaTKPtpT6n3BewX06PwJyXJCotR-sCpUGMlCU8Ov94rIltGlp6NTIYREybX3Yx'
+  return {
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+      'Accept-Language': 'en-US'
+      
+    }
+  };
+});
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+})
+```
+
+2. Add ApolloClient:
+
+```
+ReactDOM.render(
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+3. writing a request:
+
+```
+const EXCHANGE_BUSINESS = gql`
+query GetBuss {
+  business(id: "garaje-san-francisco") {
+        name
+        id
+        alias
+        rating
+        url
+    }
+}`
+```
+
+4. conditional query display:
+
+```
+function ExchangeBusiness() {
+  const { loading, error, data } = useQuery(EXCHANGE_BUSINESS);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+    console.log(data)
+    return (
+      <div>
+        {data}
+      </div>
+    )
+}
+```
 
 
