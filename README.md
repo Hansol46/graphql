@@ -49,7 +49,8 @@ Response to this data comes in **JSON** format. Successful operations return a *
 This create mutation `addBoook`, which adds a new book to the database. 
 
 ## 3. Subscription в GraphQL
-Subscription — третий тип операций в GraphQL. С его помощью клиент слушает изменения в БД в режиме реального времени. Под капотом подписки используют вебсокеты. Пример кода(условно говоря если бы можно было ставить лайки книгам):
+
+**Subscription** is the third type of operation in **GraphQL**. With its help, the client listens to changes in the database in real time. Under the hood, subscriptions use websockets. Example code (relatively speaking, if it was possible to add like books):
 
 ```
         subscription listenLikes {
@@ -61,38 +62,38 @@ Subscription — третий тип операций в GraphQL. С его по
 
 ```
 
-С помощью этого запроса можно получать список пользователей с именами и количеством лайков каждый раз, когда пользователь получает лайк.
+With this query, you can get a list of users with names and number of likes every time a user gets a like.
 
 <hr />
 
-
 ## Next step - create resolvers 
 
-Чтобы привязать наши данные к схеме, мы используем **resolvers**, в нашем случае это `root`. Поля в этом объекте полностью соответствуют тому, что был в схеме, всё что нам нужно сделать это указать какая функция выполниться при запросе какого-либо поля
+To bind our data to the schema, we use **resolvers**, in our case it is `root`. The fields in this object fully correspond to what was in the schema, all we need to do is specify which function to execute when a field is requested
+
 <p align="center" display="flex">
   <img src="https://i.ibb.co/jGMvQQW/image.png" width="400" height="400" title="hover text">
 </p>
 
-В нашем случае `allBook`, это просто массив книг, в котором лежат книги в нужном формате
+In our case, `allBookis` just an array of books containing books in the required format
 
-## Удобная консоль 
+## Convenient console 
 
-В комплекте с **GraphQL** идет **GraphiQL** - специльная консоль, которая визуально отображает запросы. Пример отображения 
+Included with GraphQL comes GraphiQL - a special console that visually displays requests. View example:
 <p align="center" display="flex">
   <img src="https://i.ibb.co/KX3k8dz/image.png" width="600" height="400" title="hover text">
 </p>
 
-В ней мы можем писать необходимые нам запросы и сразу видеть результат. Что еще более удобно эта консоль является документацией, справа на кнопке **Docs** описаны все сущности, мутации, которые есть в нашей схеме.
+In it, we can write the queries we need and immediately see the result. What is even more convenient, this console is documentation, on the right on thebutton **Docs** all entities, mutations that are in our schema are described
 
-## Отображение данных 
+## Display data 
 
-Отличным способом является использование Apollo <https://www.apollographql.com>
+Great way is to use Apollo https://www.apollographql.com
 
-Разберем по порядку что для этого необходимо сделать.
+Let's analyze in order what needs to be done for this.
 
-* Чтобы начать нам необходимо установить Apollo ``` npm install @apollo/client graphql ```
+* To get started we need to install Apollo ``` npm install @apollo/client graphql ```
 
-* Далее необходимо создать `client`
+* Next we need to create `client`
 
 ```
 		const client = new ApolloClient({
@@ -101,7 +102,7 @@ Subscription — третий тип операций в GraphQL. С его по
 		});
 ```
 
-* Следующий шаг, оборачиваем наш `<App />`
+* Next step, wrap our  `<App />`
 
 ```
 		function App() {
@@ -115,7 +116,7 @@ Subscription — третий тип операций в GraphQL. С его по
 		}
 ```
 
-* Осталось сделать запрос, в Apollo нам в этом помогает специальная функция `gql`
+* Remains to make a request, in Apollo a special function helps us with this `gql`
 
 ```
 		const EXCHANGE_RATES = gql`
@@ -128,7 +129,7 @@ Subscription — третий тип операций в GraphQL. С его по
 		`;
 ```
 
-* И наконец отобразить данные, помещая нашу переменную в hook `useQuert`
+* Finally, display the data by placing our variable in the hook `useQuert`
 
 ```
 		function ExchangeRates() {
