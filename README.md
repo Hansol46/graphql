@@ -14,6 +14,8 @@
 
 <hr />
 
+<br />
+
 ## Where to begin?
 
 Creating a schema. The schema is the skeleton of the entire server side, which contains all our requests. We can consider an example of a schema:
@@ -22,6 +24,8 @@ Creating a schema. The schema is the skeleton of the entire server side, which c
   <img src="https://i.ibb.co/3mTcSQG/image.png" width="400" height="400" title="hover text">
 </p>
 This schema describes what entities we have in the application and what manipulations we can generally perform with them. Let's talk in more detail about entities and queries.
+
+<br />
 
 ## 1. Query queries in GraphQL
 
@@ -36,6 +40,8 @@ Using queries, **GraphQL** retrieves the necessary data from the server. **Query
 
 Response to this data comes in **JSON** format. Successful operations return a **JSON** with the key and the data, and unsuccessful return **JSON** with the key and the error message. This makes it convenient to handle errors on the client side.
 
+<br />
+
 ## 2. Mutation в GraphQL
 
 **Mutation** is another root type. If **Query** is analogous to **GET**, then **Mutation** is analogous to **POST** and **PUT** in **REST**. Using this method, you can mutate or, more simply, change the data, for example, add some data to the database. Example code for adding a new book:
@@ -47,6 +53,8 @@ Response to this data comes in **JSON** format. Successful operations return a *
 ```
 
 This create mutation `addBoook`, which adds a new book to the database. 
+
+<br />
 
 ## 3. Subscription в GraphQL
 
@@ -66,6 +74,8 @@ With this query, you can get a list of users with names and number of likes ever
 
 <hr />
 
+<br />
+
 ## Next step - create resolvers 
 
 To bind our data to the schema, we use **resolvers**, in our case it is `root`. The fields in this object fully correspond to what was in the schema, all we need to do is specify which function to execute when a field is requested
@@ -76,6 +86,8 @@ To bind our data to the schema, we use **resolvers**, in our case it is `root`. 
 
 In our case, `allBookis` just an array of books containing books in the required format
 
+<br />
+
 ## Convenient console 
 
 Included with GraphQL comes GraphiQL - a special console that visually displays requests. View example:
@@ -84,6 +96,8 @@ Included with GraphQL comes GraphiQL - a special console that visually displays 
 </p>
 
 In it, we can write the queries we need and immediately see the result. What is even more convenient, this console is documentation, on the right on thebutton **Docs** all entities, mutations that are in our schema are described
+
+<br />
 
 ## Display data 
 
@@ -150,6 +164,7 @@ Let's analyze in order what needs to be done for this.
 
 <hr />
 
+<br />
 
 # Positive and negative GraphQL
 
@@ -169,6 +184,8 @@ There is one truth in GraphQL applications and that is the GraphQL schema. It is
 
    4. **Versions of GraphQL** <br />
 GraphQL doesn't have the same API versions that we're used to in REST. In REST, it's okay to offer multiple versions of the same API (eg api.domain.com/v1/, api.domain.com/v2/) because resources or their structure can change over time. In GraphQL, you can translate APIs into deprecated fields at the field level. Consequently, the client receives a warning when they access a deprecated field. After some time, the deprecated field can be excluded from the schema, then no more clients will use it. This way, the GraphQL API can evolve without the need for versioning
+
+<br />
 
 ## Negative 
 
