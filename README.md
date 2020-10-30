@@ -157,11 +157,11 @@ Let's features and disadvantages of GraphQL.
 
 ## Positive: 
 
-   1. **No overabundance when working with GraphQL**
+   1. **No overabundance when working with GraphQL** <br />
 When working with GraphQL, there is no superfluous information. We only get what we ask for.
 GraphQL minimizes the amount of data transferred over the network by selectively picking it up and guided primarily by the needs of the client application.
 
-   2. **Strongly Typed GraphQL**
+   2. **Strongly Typed GraphQL** <br />
 GraphQL is a strongly typed query language written in an Expressive Schema Definition Language (SDL) for GraphQL. This language has the same benefits as any strongly typed programming language. Obviously this approach is less error prone
 
    3. **One Source of Truth**
