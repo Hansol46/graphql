@@ -109,47 +109,52 @@ Subscription — третий тип операций в GraphQL. С его по
 * Следующий шаг, оборачиваем наш `<App />`
 
 ```
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <div>
-        <h2>My first Apollo app 🚀</h2>
-      </div>
-    </ApolloProvider>
-  );
-}
+		function App() {
+		  return (
+		    <ApolloProvider client={client}>
+		      <div>
+			<h2>My first Apollo app 🚀</h2>
+		      </div>
+		    </ApolloProvider>
+		  );
+		}
 ```
 
 * Осталось сделать запрос, в Apollo нам в этом помогает специальная функция `gql`
 
 ```
-const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
-    }
-  }
-`;
+		const EXCHANGE_RATES = gql`
+		  query GetExchangeRates {
+		    rates(currency: "USD") {
+		      currency
+		      rate
+		    }
+		  }
+		`;
 ```
 
 * И наконец отобразить данные, помещая нашу переменную в hook `useQuert`
 
 ```
-function ExchangeRates() {
-  const { loading, error, data } = useQuery(EXCHANGE_RATES);
+		function ExchangeRates() {
+		  const { loading, error, data } = useQuery(EXCHANGE_RATES);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+		  if (loading) return <p>Loading...</p>;
+		  if (error) return <p>Error :(</p>;
 
-  return data.rates.map(({ currency, rate }) => (
-    <div key={currency}>
-      <p>
-        {currency}: {rate}
-      </p>
-    </div>
-  ));
-}
+		  return data.rates.map(({ currency, rate }) => (
+		    <div key={currency}>
+		      <p>
+			{currency}: {rate}
+		      </p>
+		    </div>
+		  ));
+		}
 ```
 
-Очень удобно!
+<hr />
+
+
+# Плюсы и минусы GraphQL
+
+Разберем особенности и недостатки GraphQL. Начнем 
