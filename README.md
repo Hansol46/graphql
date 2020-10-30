@@ -91,9 +91,9 @@ Subscription — третий тип операций в GraphQL. С его по
 
 ## Отображение данных 
 
-Отличным способом является использование Apollo
+Отличным способом является использование Apollo <https://www.apollographql.com/docs/react/get-started/>
 
-<https://www.apollographql.com/docs/react/get-started/>
+Разберем по порядку что для этого необходимо сделать.
 
 * Чтобы начать нам необходимо установить Apollo ``` npm install @apollo/client graphql ```
 
