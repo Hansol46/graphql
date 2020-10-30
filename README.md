@@ -1,14 +1,11 @@
 # about GraphQL
 
-
-**GraphQL** – это язык запросов, созданный в компании Facebook в 2012 году, причиной этому стали столкновения с ограничениями традиционных **REST API** интерфейсов (поговорим об этом позже). Так как **GraphQL**, это просто спецификация, то сервер можно реализовывать на **Node.js**, **php**, **Ruby**; а клиентскую часть, к примеру на **Relay** или **Apollo** (есть как React-Apollo, так и Angular-Apollo).
-Для сравнения **GraphQL** и **REST**, можно использовать метафору. Традиционный **REST** это, как если бы мы записывались к стоматологу, заказывали доставку, и звонили в сервис ремонта машин используя три телефонных звонка, на три разных телефонных номера. 
+**GraphQL** is a query language created by Facebook in 2012 due to collisions with the limitations of traditional **REST APIs** (more on that later). Since **GraphQL** is just a specification, the server can be implemented in Node.js, php, Ruby; and the client side, for example, on Relay or Apollo (there are both React-Apollo and Angular-Apollo). To compare **GraphQL** and **REST**, you can use a metaphor. Traditional **REST** is like making an appointment with a dentist, ordering delivery, and calling a car repair service using three phone calls to three different phone numbers.
 
 <p align="center" display="flex">
   <img src="https://i.ibb.co/jkQZ6KP/image.png" width="400" height="400" title="hover text">
 </p>
-
-**GraphQL** в свою очередь выступаем как наш личный помощник, позволяя нам передать ему возможность записать вас к стоматологу, привезти доставку и связать с сервисом ремонта машин. Мы запрашиваем то, что нам необходимо и затем просто ждем.
+**GraphQL**, in turn, acts as our personal assistant, allowing us to give him the opportunity to book you to the dentist, deliver delivery and connect with the machine repair service. We ask for what we need and then just wait.
 
 <p align="center" display="flex">
   <img src="https://i.ibb.co/P5BsW0w/image.png" width="400" height="400" title="hover text">
@@ -18,17 +15,16 @@
 
 ## Where to begin?
 
-Создание схемы.
-Схема - это скелет всей серверной части, в которой находятся все наши запросы. Можем рассмотреть пример схемы:
+Creating a schema. The schema is the skeleton of the entire server side, which contains all our requests. We can consider an example of a schema:
 
 <p align="center" display="flex">
   <img src="https://i.ibb.co/3mTcSQG/image.png" width="400" height="400" title="hover text">
 </p>
-Это схема описывает какие сущности есть у нас в приложении и какие манипуляции мы вообще можем с ними производить. Поговорим более подробно об сущностях и запросах.
+This schema describes what entities we have in the application and what manipulations we can generally perform with them. Let's talk in more detail about entities and queries.
 
+## 1. Query queries in GraphQL
 
-## 1. Query запросы в GraphQL
-С помощью запросов **GraphQL** получает необходимые данные с сервера. **Query** в **GraphQL** — это аналог **GET** в **REST**. **Query** описывает данные, которые необходимо получить с сервера. Напримере нашей схемы, с помощью кода ниже можно получить массив книг `Book` и второй запрос, это получение книги по `id`. 
+Using queries, **GraphQL** retrieves the necessary data from the server. **Query** in **GraphQL** is analogous to **GET** in **REST**. Query describes the data to be retrieved from the server. For example, our scheme, using the code below, you can get an array of books `Book` and the second request is to get a book by `id`.
 
 ```
         type Query {
@@ -37,11 +33,11 @@
         }
 ```
 
-Ответ на эти данные приходит в формате **JSON**. Успешные операции возвращают **JSON** с ключом и данными, а неуспешные возвращают **JSON** с ключом и сообщением об ошибке. Благодаря этому удобно обрабатывать ошибки на стороне клиента.
-
+Response to this data comes in **JSON** format. Successful operations return a **JSON** with the key and the data, and unsuccessful return **JSON** with the key and the error message. This makes it convenient to handle errors on the client side.
 
 ## 2. Mutation в GraphQL
-**Mutation** — ещё один корневой тип. Если **Query** это аналог **GET**, то **Mutation** - аналог **POST** и **PUT** в **REST**. С помощью этого метода, можно мутировать или проще говоря изменять данные, к примеру добавлять какие-нибудь данные в базу данных. Пример кода добавление новой книги:
+
+**Mutation** is another root type. If **Query** is analogous to **GET**, then **Mutation** is analogous to **POST** and **PUT** in **REST**. Using this method, you can mutate or, more simply, change the data, for example, add some data to the database. Example code for adding a new book:
 
 ```
         type Mutation {
@@ -49,8 +45,7 @@
         }
 ```
 
-Здесь создаётся мутация createUser, которая добавляет в БД пользователя с name Richie и age 22. В ответ на этот запрос сервер присылает JSON с id записи.
-
+This create mutation `addBoook`, which adds a new book to the database. 
 
 ## 3. Subscription в GraphQL
 Subscription — третий тип операций в GraphQL. С его помощью клиент слушает изменения в БД в режиме реального времени. Под капотом подписки используют вебсокеты. Пример кода(условно говоря если бы можно было ставить лайки книгам):
