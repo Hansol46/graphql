@@ -15,13 +15,15 @@ GraphQL в свою очередь выступаем как наш личный
 </p>
 
 <hr />
-### Where to begin?
 
-Создание схемы
+## Where to begin?
+
+
+## Создание схемы
 Схема это скелет всей серверной части, можем рассмотреть пример схемы:
 
 <p align="center" display="flex">
-  <img src="https://i.ibb.co/fdZ3fkL/img-site2.png" width="400" height="400" title="hover text">
+  <img src="https://i.ibb.co/3mTcSQG/image.png" width="400" height="400" title="hover text">
 </p>
 Это схема описывает какие сущности есть у нас в приложении и какие манипуляции мы вообще можем с ними производить. Поговорим более подробно об этих сущностях.
 
