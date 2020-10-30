@@ -1,4 +1,4 @@
-# about GraphQL
+# About GraphQL
 
 **GraphQL** is a query language created by Facebook in 2012 due to collisions with the limitations of traditional **REST APIs** (more on that later). Since **GraphQL** is just a specification, the server can be implemented in Node.js, php, Ruby; and the client side, for example, on Relay or Apollo (there are both React-Apollo and Angular-Apollo). To compare **GraphQL** and **REST**, you can use a metaphor. Traditional **REST** is like making an appointment with a dentist, ordering delivery, and calling a car repair service using three phone calls to three different phone numbers.
 
