@@ -154,6 +154,6 @@ Subscription — третий тип операций в GraphQL. С его по
 <hr />
 
 
-# Плюсы и минусы GraphQL
+# Positive and negative GraphQL
 
 Разберем особенности и недостатки GraphQL. Начнем 
